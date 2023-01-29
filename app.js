@@ -1,17 +1,18 @@
 const express = require('express');
 const request = require('request');
 const sendgrid = require('@sendgrid/mail');
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY
-sendgrid.setApiKey(SENDGRID_API_KEY)
+
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
+sendgrid.setApiKey(SENDGRID_API_KEY);
 const port = process.env.PORT || 3001;
+
+const app = express();
 
 let msg = {
   from: 'rorystandley@gmail.com',
   to: ['rorystandley@gmail.com', 'watson.jake1996@gmail.com'],
   subject: 'War Day Results',
 }
-
-const app = express()
 
 function getRequestStuff(url) {
   return options = {
