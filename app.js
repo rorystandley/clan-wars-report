@@ -113,8 +113,8 @@ function generateHtmlTable(data) {
     html += element.boatAttacks;
     html += "</td>";
     html += "<td style='text-align:center' ";
-    if (element.decksUsedToday !== 4) {
-      html += "style='background-color: red; color: white;'";
+    if (element.decksUsedToday < 4) {
+      html += "background-color: red; color: white;'";
     }
     html += ">";
     html += element.decksUsedToday;
