@@ -10,7 +10,7 @@ const app = express();
 
 let msg = {
   from: 'rorystandley@gmail.com',
-  to: ['rorystandley@gmail.com'],
+  to: ['rorystandley@gmail.com', 'watson.jake1996@gmail.com'],
   subject: 'War Day Results',
 }
 
