@@ -62,7 +62,6 @@ async function getRiverRaceData() {
     additionalData.forEach((data, i) => {
       const participantDataJSON = JSON.parse(data);
       const participantExists = participantDataJSON.clan && participantDataJSON.clan.tag === '#2L8CYUP';
-      // console.log(participantDataJSON.name, participantExists);
       if (participantExists) {
         currentClanMembers.push(clanDataJSON.clan.participants[i]);
       }
