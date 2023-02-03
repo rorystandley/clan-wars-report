@@ -93,7 +93,7 @@ app.get('/:id?', async (req, res) => {
 
 function generateHtmlTable(data) {
   let html = "<table border='1' style='width:100%; border-collapse: collapse;'>";
-  html += "<tr><th>Position</th><th>Name</th><th>Fame</th><th>Repair Points</th><th>Boat Attacks</th><th>Decks Used</th><th>Decks Used Today</th></tr>"
+  html += "<tr><th>Position</th><th>Name</th><th>Fame</th><th>Repair Points</th><th>Boat Attacks</th><th>Decks Used Today</th></tr>"
   let counter = 0;
   data.forEach((element) => {
     html += "<tr>";
@@ -112,10 +112,11 @@ function generateHtmlTable(data) {
     html += "<td style='text-align:center'>";
     html += element.boatAttacks;
     html += "</td>";
-    html += "<td style='text-align:center'>";
-    html += element.decksUsed;
-    html += "</td>";
-    html += "<td style='text-align:center'>";
+    html += "<td style='text-align:center' ";
+    if (element.decksUsedToday !== 4) {
+      html += "style='background-color: red; color: white;'";
+    }
+    html += ">";
     html += element.decksUsedToday;
     html += "</td>";
     html += "</tr>";
