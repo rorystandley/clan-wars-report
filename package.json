@@ -6,6 +6,9 @@
   "scripts": {
     "start": "npm i && node app.js"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
