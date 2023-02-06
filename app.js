@@ -1,6 +1,5 @@
 const express = require('express');
 const request = require('request');
-const sendgrid = require('@sendgrid/mail');
 
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -10,17 +9,8 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-sendgrid.setApiKey(SENDGRID_API_KEY);
 const port = process.env.PORT || 3001;
-
 const app = express();
-
-let msg = {
-  from: 'rorystandley@gmail.com',
-  to: ['rorystandley@gmail.com', 'watson.jake1996@gmail.com'],
-  subject: 'War Day Results',
-}
 
 const getRequestOptions = (url) => ({
   'method': 'GET',
@@ -81,26 +71,6 @@ async function getRiverRaceData() {
   }
 }
 
-function generateHtmlTable(data) {
-  let html = "<table border='1' style='width:100%; border-collapse: collapse;'>";
-  html += "<tr><th>Column 1</th><th>Column 2</th><th>Column 3</th></tr>"
-  data.forEach((element) => {
-    html += "<tr>";
-    html += "<td style='text-align:center'>";
-    html += element.column1;
-    html += "</td>";
-    html += "<td style='text-align:center'>";
-    html += element.column2;
-    html += "</td>";
-    html += "<td style='text-align:center'>";
-    html += element.column3;
-    html += "</td>";
-    html += "</tr>";
-  });
-  html += "</table>"
-  return html;
-}
-
 app.get('/:id?', async (req, res) => {
   if (!req.params.id || req.params.id !== "rory") {
     return res.status(400).send("Invalid request.");
@@ -124,8 +94,6 @@ app.get('/:id?', async (req, res) => {
       }
       channel.send(msg);
     }
-    // msg.html = html;
-    // sendgrid.send(msg);
     res.status(200).send("Report sent.");
   } catch (err) {
     console.log(err);
