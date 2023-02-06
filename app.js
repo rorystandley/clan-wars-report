@@ -4,7 +4,7 @@ const sendgrid = require('@sendgrid/mail');
 
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-client.login('MTA3MTEwNDUxMjA4NzA0ODIzMg.GYZC9r.IskNzR3InA1e-Ob2lleD5EaL3eXpgohYLIKTGE');
+client.login(process.env.DISCORD_BOT);
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -26,7 +26,7 @@ const getRequestOptions = (url) => ({
   'method': 'GET',
   'url': `https://proxy.royaleapi.dev/v1/${url}`,
   'headers': {
-    'Authorization': `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjllNDRjZDJjLWMzMzEtNDk4ZC1hZWVjLTNiODhmODllZmEyOCIsImlhdCI6MTY1OTk2ODEwMCwic3ViIjoiZGV2ZWxvcGVyLzFlMTExZWJlLWRmZjYtMjEwYy0zYWI0LTBhMjNiY2U4NTQyZCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI0NS43OS4yMTguNzkiXSwidHlwZSI6ImNsaWVudCJ9XX0.LsVuAZNI0JHfOVbBldPw7cMTcMne0Ggu06-RRuwGCovCuyg8xN7naQVkqH4h_aDFnBQM2vgc1vMHv-R1HybgWg`
+    'Authorization': `Bearer ${process.env.CLASH_ROYALE_BEARER_TOKEN}`
   }
 });
 
