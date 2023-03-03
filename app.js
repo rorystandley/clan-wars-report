@@ -53,7 +53,7 @@ async function getRiverRaceData() {
             .on('error', error => {
               reject(error);
             });
-        }, 100 * index);
+        }, 50 * index);
       });
     });
     const additionalData = await Promise.all(requests);
